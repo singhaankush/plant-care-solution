@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishi Ghar - Premium Agricultural Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --secondary: #f8f9fa;
+            --dark: #212529;
+            --light: #000000;
+            --accent: #ff9800;
+            --accent-dark: #f57c00;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e32b2b 50%, #0e0e0e 70%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .head {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 30px 20px;
+            text-align: center;
+            color: whitesmoke;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            padding-bottom: 60px;
+            margin-bottom: -30px;
+        }
+        
+        .head:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+        }
+        
+        .head:hover {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            letter-spacing: 1px;
+        }
+        
+        .head-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        /* Product Grid */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: var(--light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--light-gray);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-light);
+        }
+        
+        .product-image-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: var(--light-gray);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card h2 {
+            margin: 0 0 10px;
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .card p {
+            margin: 0 0 15px;
+            color: white;
+            font-size: 0.95rem;
+            min-height: 40px;
+            flex-grow: 1;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .current-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        .original-price {
+            font-size: 1rem;
+            text-decoration: line-through;
+            color: var(--gray);
+            margin-left: 8px;
+        }
+        
+        .discount-badge {
+            background: var(--accent);
+            color: var(--light);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        .btn i {
+            margin-left: 8px;
+        }
+        
+        .product-label {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: var(--light);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .product-label.new {
+            background: #2196F3;
+        }
+        
+        .product-label.best-seller {
+            background: #f44336;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .rating-stars {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        .rating-count {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-left: 5px;
+        }
+        
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: rgb(0, 0, 0);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
+            background: var(--primary-dark);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .head {
+                font-size: 2rem;
+                padding: 20px;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+                padding-bottom: 50px;
+                margin-bottom: -20px;
+            }
+            
+            .head-subtitle {
+                font-size: 1rem;
+            }
+            
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                padding: 30px 20px;
+                gap: 20px;
+            }
+            
+            .product-image-container {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .head {
+                font-size: 1.8rem;
+                clip-path: polygon(0 0, 100% 0, 100% 97%, 0 100%);
+                padding-bottom: 40px;
+                margin-bottom: -15px;
+            }
+            
+            .current-price {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+        .card:nth-child(8) { animation-delay: 0.8s; }
+        .card:nth-child(9) { animation-delay: 0.9s; }
+        .card:nth-child(10) { animation-delay: 1s; }
+        
+        /* Modern additions */
+        .tag {
+            display: inline-block;
+            background: var(--gray);
+            color: var(--light-gray);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .quick-view {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: var(--transition);
+            opacity: 0;
+        }
+        
+        .card:hover .quick-view {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1>Our Premium Products</h1>
+        <div class="head-subtitle">Affordable Quality for Modern Farming</div>
+    </div>
+    
+    <div class="container">
+        <!-- Product 1 -->
+        <div class="card">
+            <div class="product-label">Popular</div>
+            <div class="product-image-container">
+                <img src="/IMG-20250511-WA0025.jpg" alt="Organic Fertilizer" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>QuizaKill (Herbicide)</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-count">(128)</div>
+                </div>
+                <p>A chemical substance that farmers use to kill plants that are growing where they are not wanted</p>
+                <div class="tags-container">
+                    <span class="tag">Organic</span>
+                    <span class="tag">Vegan</span>
+                    <span class="tag">NPK</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹249</span>
+                        <span class="original-price">₹349</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="card">
+            <div class="product-label new">New</div>
+            <div class="product-image-container">
+                <img src="/WhatsApp Image 2025-05-11 at 15.56.14_669d194f.jpg" alt="Drip Irrigation Kit" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>SAF-Cure(Fungicide)</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(86)</div>
+                </div>
+                <p>biochemical compounds used to kill fungi in plants</p>
+                <div class="tags-container">
+                    <span class="tag">Water Saving</span>
+                    <span class="tag">Easy Install</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹1,299</span>
+                        <span class="original-price">₹1,799</span>
+                    </div>
+                    <div class="discount-badge">28% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="card">
+            <div class="product-label best-seller">Best Seller</div>
+            <div class="product-image-container">
+                <img src="/prd/3.jpg" alt="Hybrid Seeds Pack" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>High Dose-100</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-count">(214)</div>
+                </div>
+                <p>A plant Food</p>
+                <div class="tags-container">
+                    <span class="tag">High Yield</span>
+                    <span class="tag">Disease Resistant</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹149</span>
+                        <span class="original-price">₹199</span>
+                    </div>
+                    <div class="discount-badge">25% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="card">
+            <div class="product-image-container">
+                <img src="/prd/4.jpg" alt="Garden Tool Set" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>NutriClik</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-count">(156)</div>
+                </div>
+                <p>essential for plant growth, supplying small but crucial amounts of nutrients like zinc, boron, iron, and manganese</p>
+                <div class="tags-container">
+                    <span class="tag">Stainless Steel</span>
+                    <span class="tag">Comfort Grip</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹599</span>
+                        <span class="original-price">₹899</span>
+                    </div>
+                    <div class="discount-badge">33% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        
+        <!-- Product 5 -->
+        <div class="card">
+            <div class="product-label">Popular</div>
+            <div class="product-image-container">
+                <img src="/prd/5.jpg" alt="Vermicompost" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Stuff</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-count">(189)</div>
+                </div>
+                <p>chemicals used to control insects by killing them or preventing them from engaging in undesirable or destructive behaviors</p>
+                <div class="tags-container">
+                    <span class="tag">Organic</span>
+                    <span class="tag">Chemical Free</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹349</span>
+                        <span class="original-price">₹499</span>
+                    </div>
+                    <div class="discount-badge">30% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        
+        <!-- Product 6 -->
+        <div class="card">
+            <div class="product-image-container">
+                <img src="/prd/6.jpg" alt="Spray Pump" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Rawan</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(97)</div>
+                </div>
+                <p>Biochemical compounds used to kill fungi in plants</p>
+                <div class="tags-container">
+                    <span class="tag">Brass Nozzle</span>
+                    <span class="tag">5L Capacity</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        
+        <!-- Product 7 -->
+        <div class="card">
+            <div class="product-label">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/7.jpg" alt="Grow Bags" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Acrovat</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-count">(142)</div>
+                </div>
+                <p>Biochemical compounds used to kill fungi in plants</p>
+                <div class="tags-container">
+                    <span class="tag">Reusable</span>
+                    <span class="tag">UV Protected</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹399</span>
+                        <span class="original-price">₹599</span>
+                    </div>
+                    <div class="discount-badge">33% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        
+        <!-- Product 8 -->
+        <div class="card">
+            <div class="product-label new">New</div>
+            <div class="product-image-container">
+                <img src="/prd/8.jpg" alt="Neem Oil" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Prependy</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-count">(203)</div>
+                </div>
+                <p>A chemical substance that farmers use to kill plants that are growing where they are not wanted</p>
+                <div class="tags-container">
+                    <span class="tag">Organic</span>
+                    <span class="tag">Pesticide</span>
+                    <span class="tag">Fungicide</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹449</span>
+                        <span class="original-price">₹649</span>
+                    </div>
+                    <div class="discount-badge">31% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- Product 16 -->
+        <div class="card">
+            <div class="product-label">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/16.jpg" alt="Garden Rake" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Cloban</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(87)</div>
+                </div>
+                <p>chemicals used to control insects by killing them or preventing them from engaging in undesirable or destructive behaviors</p>
+                <div class="tags-container">
+                    <span class="tag">Steel</span>
+                    <span class="tag">Wooden Handle</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 17 -->
+        <div class="card">
+            <div class="product-label new">New</div>
+            <div class="product-image-container">
+                <img src="/prd/17.jpg" alt="Soil Tester" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Profex-Super</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(64)</div>
+                </div>
+                <p>a type of pesticide that kill insects through direct contact</p>
+                <div class="tags-container">
+                    <span class="tag">Digital</span>
+                    <span class="tag">Multi-function</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹699</span>
+                        <span class="original-price">₹999</span>
+                    </div>
+                    <div class="discount-badge">30% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 18 -->
+        <div class="card">
+            <div class="product-image-container">
+                <img src="/prd/18.jpg" alt="Plant Ties" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Active 80</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-count">(132)</div>
+                </div>
+                <p>Active 80 is highly Concentrated non ionic wetting agent with 80% active ingredients. A special fromula with Reology modifiers. when added to pesticides</p>
+                <div class="tags-container">
+                    <span class="tag">Soft</span>
+                    <span class="tag">Reusable</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹149</span>
+                        <span class="original-price">₹199</span>
+                    </div>
+                    <div class="discount-badge">25% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 19 -->
+        <div class="card">
+            <div class="product-label best-seller">Best Seller</div>
+            <div class="product-image-container">
+                <img src="/prd/19.jpg" alt="Water Timer" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Separte</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-count">(178)</div>
+                </div>
+                <p>Biochemical compounds used to kill fungi in plants</p>
+                <div class="tags-container">
+                    <span class="tag">Digital</span>
+                    <span class="tag">Water Saving</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹1,199</span>
+                        <span class="original-price">₹1,699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 20 -->
+        <div class="card">
+            <div class="product-image-container">
+                <img src="/prd/20.jpg" alt="Garden Fork" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Iron</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(94)</div>
+                </div>
+                <p>Iron fertilizers, either as solid products or suspension or dissolved in water, have been used in a variety of ways: injected into trunks, sprayed on leaves, applied to the surface, injected directly into the soil or incorporated in the irrigation water</p>
+                <div class="tags-container">
+                    <span class="tag">Stainless Steel</span>
+                    <span class="tag">Durable</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹649</span>
+                        <span class="original-price">₹899</span>
+                    </div>
+                    <div class="discount-badge">28% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 21 -->
+        <div class="card">
+            <div class="product-label popular">Popular</div>
+            <div class="product-image-container">
+                <img src="/prd/21.jpg" alt="Compost Bin" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Crabb</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-count">(201)</div>
+                </div>
+                <p>chemicals used to control insects by killing them or preventing them from engaging in undesirable or destructive behaviors</p>
+                <div class="tags-container">
+                    <span class="tag">65L Capacity</span>
+                    <span class="tag">Easy Assembly</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹1,499</span>
+                        <span class="original-price">₹1,999</span>
+                    </div>
+                    <div class="discount-badge">25% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 22 -->
+        <div class="card">
+            <div class="product-label new">New</div>
+            <div class="product-image-container">
+                <img src="/prd/22.jpg" alt="Garden Kneeler" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Juster</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(76)</div>
+                </div>
+                <p>chemicals used to control insects by killing them or preventing them from engaging in undesirable or destructive behaviors</p>
+                <div class="tags-container">
+                    <span class="tag">Foldable</span>
+                    <span class="tag">Comfortable</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹899</span>
+                        <span class="original-price">₹1,199</span>
+                    </div>
+                    <div class="discount-badge">25% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 23 -->
+        <div class="card">
+            <div class="product-image-container">
+                <img src="/prd/23.jpg" alt="Plant Markers" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Tarbut</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-count">(143)</div>
+                </div>
+                <p>chemicals used to control insects by killing them or preventing them from engaging in undesirable or destructive behaviors</p>
+                <div class="tags-container">
+                    <span class="tag">Reusable</span>
+                    <span class="tag">Weatherproof</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹199</span>
+                        <span class="original-price">₹299</span>
+                    </div>
+                    <div class="discount-badge">33% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 24 -->
+        <div class="card">
+            <div class="product-label best-seller">Best Seller</div>
+            <div class="product-image-container">
+                <img src="/prd/24.jpg" alt="Garden Twine" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Spider</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-count">(187)</div>
+                </div>
+                <p>compounds that have been used globally for pest control for over 100 years</p>
+                <div class="tags-container">
+                    <span class="tag">Natural</span>
+                    <span class="tag">Biodegradable</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹249</span>
+                        <span class="original-price">₹349</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 25 -->
+        <div class="card">
+            <div class="product-image-container">
+                <img src="/prd/13.jpg" alt="Garden Scoop" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Hamla-550</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(102)</div>
+                </div>
+                <p>Biochemical compounds used to kill fungi in plants</p>
+                <div class="tags-container">
+                    <span class="tag">Stainless Steel</span>
+                    <span class="tag">Durable</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹349</span>
+                        <span class="original-price">₹499</span>
+                    </div>
+                    <div class="discount-badge">30% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    
+        <!-- Product 26 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/26.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Oxy</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>designed to target certain plants or types of plants while not harming the plants you want to keep</p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- product 27 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/27.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Corgi</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>Biochemical compounds used to kill fungi in plants</p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- product 28 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/28.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Drive</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>Silicone surfactants are unique because the silicone portion provides ultra-low surface tension, letting spray droplets spread to form a thin, uniform film instead of beading up</p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- product 29 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/29.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>M-Phill</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>chemicals used to control insects by killing them or preventing them from engaging in undesirable or destructive behaviors</p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- product 30 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/30.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Humlo-G</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>Water-resistant apron with multiple pockets for tools</p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- product 31 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/31.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Gardener's Apron with Pockets</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>Water-resistant apron with multiple pockets for tools</p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- product 32 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/32.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Croma</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>a substance or treatment used to increase the amount of a crop produced per unit area. These boosters can be fertilizers, growth regulators, or other products that enhance plant growth, stress tolerance, and disease resistance. They aim to improve the overall health and vigor of plants, leading to a higher yield of fruits, vegetables, or grains. </p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+        <!-- product 33 -->
+        <div class="card">
+            <div class="product-label limited">Limited Stock</div>
+            <div class="product-image-container">
+                <img src="/prd/33.jpg" alt="Garden Apron" class="product-image">
+                <div class="quick-view">Quick View</div>
+            </div>
+            <div class="product-info">
+                <h2>Budget</h2>
+                <div class="rating">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                    </div>
+                    <div class="rating-count">(89)</div>
+                </div>
+                <p>Systemic and contact fungicides are two primary types of fungicides used to control fungal diseases in plants. Systemic fungicides are absorbed by the plant and distributed throughout its vascular system, providing broad-spectrum protection from the inside out</p>
+                <div class="tags-container">
+                    <span class="tag">Waterproof</span>
+                    <span class="tag">Multi-pocket</span>
+                </div>
+                <div class="price-container">
+                    <div>
+                        <span class="current-price">₹499</span>
+                        <span class="original-price">₹699</span>
+                    </div>
+                    <div class="discount-badge">29% OFF</div>
+                </div>
+                <button class="btn">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    <a href="tel:+91 9732258680" class="fab">
+        <i class="fas fa-phone"></i>
+    </a>
+            
+            <script>
+                // Add smooth scrolling to all links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+                
+                // Add animation when scrolling to products
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = 1;
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                document.querySelectorAll('.card').forEach(card => {
+                    observer.observe(card);
+                });
+                
+                // Quick view functionality
+                document.querySelectorAll('.quick-view').forEach(quickView => {
+                    quickView.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const productName = this.closest('.card').querySelector('h2').textContent;
+                        alert(`Quick view of: ${productName}\n(Detailed product view would open here)`);
+                    });
+                });
+                
+                // Add to cart animation
+                document.querySelectorAll('.btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productName = this.closest('.card').querySelector('h2').textContent;
+                        this.innerHTML = '<i class="fas fa-check"></i> Added';
+                        this.style.background = 'var(--accent)';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = 'Add to Cart <i class="fas fa-shopping-cart"></i>';
+                            this.style.background = 'var(--primary)';
+                        }, 2000);
+                        
+                        // In a real app, you would add to cart here
+                        console.log(`Added to cart: ${productName}`);
+                    });
+                });
+            </script>
+        </body>
+        </html>
